@@ -11,16 +11,19 @@ from scipy.sparse.csgraph import maximum_flow
 SOURCE = 0
 SINK = 1
 
+
 class Student:
     def __init__(self, id, avails):
         self.id = id
         self.avails = avails
 
+
 # the output of the scheduler
 class Schedule:
     def __init__(self, student_uuid, start_time):
         self.uuid = student_uuid
-        self.start_time = time
+        self.start_time = start_time
+
 
 def create_graph(students, times, caps):
     # source -(1s)-> {students} -(1s)-> {office hours} -(max OH capacity)-> sink
@@ -48,6 +51,7 @@ def create_graph(students, times, caps):
     graph[student_end:, SINK] = np.array(caps)
     
     return csr_matrix(graph)
+
 
 # students:
 # times: individual 15-min time blocks

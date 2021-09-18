@@ -7,7 +7,6 @@ class Session(models.Model):
     class Status(models.IntegerChoices):
         SCHEDULED = 1,
         STARTED = 2
-    name = models.TextField
     startTime = models.DateTimeField
     endTime = models.DateTimeField
     ca = models.ForeignKey(CA)
