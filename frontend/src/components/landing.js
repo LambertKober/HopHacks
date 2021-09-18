@@ -1,28 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './landing.css';
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col, Modal, Button } from 'react-bootstrap';
 import {Link, withRouter} from "react-router-dom";
+import BootstrapModal from "./login.js";
 
-function LandingApp(props) {
+function Landing(props) {
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     return (
         <div class="container">
-            <br/>
-            <h1>Welcome to TicketOH!</h1>
-            <br/>
-            <br/>
             <Container>
+                <br/>
+                <h1>Welcome to TicketOH!</h1>
+                <br/>
                 <Row>
                     <Col>
-                        <Link class="nav-link" to="/calendar">
-                            <button type="button" className="btn btn-primary button">
-                                Click here if you are a student!
-                            </button>
-                        </Link>
+                        <button type="button" className="btn btn-primary button" onClick={handleShow}>
+                            <h2>Click here if you are a student!</h2>
+                        </button>
                     </Col>
                     <Col>
                         <Link class="nav-link" to="/calendar">
                             <button type="button" className="btn btn-secondary button">
-                                Click here if you are a CA!
+                                <h2>Click here if you are a CA!</h2>
                             </button>
                         </Link>
                     </Col>
@@ -32,4 +35,4 @@ function LandingApp(props) {
     )
 }
 
-export default withRouter(LandingApp);
+export default withRouter(Landing);
