@@ -12,21 +12,25 @@ SOURCE = 0
 SINK = 1
 
 class Student:
-    def __init__(self, id, oh):
-        # the final assigned OH
-        #self.assignment = None
+    def __init__(self, id, avails):
         self.id = id
-        self.avails = oh
+        self.avails = avails
 
-def create_graph(students, office_hours, max_oh_cap):
-    # source node -(1s)-> {students} -(1s)-> {office hours} -(max OH capacity)-> sink node
+# the output of the scheduler
+class Schedule:
+    def __init__(self, student_uuid, start_time):
+        self.uuid = student_uuid
+        self.start_time = time
+
+def create_graph(students, times, caps):
+    # source -(1s)-> {students} -(1s)-> {office hours} -(max OH capacity)-> sink
     
     # graph node structure: {source} {sink} {students} {office hours}
     
     student_end = 2 + len(students)
     
     # + 2 for the source and sink nodes
-    num_nodes = student_end + len(office_hours)
+    num_nodes = student_end + len(intervals)
     
     graph = np.zeros((num_nodes, num_nodes), dtype=np.int)
     
@@ -36,18 +40,20 @@ def create_graph(students, office_hours, max_oh_cap):
     # connect the students to the office hours
     for i, student in enumerate(students):
     
-        for oh in student.avails:
+        for interval_index in student.avails:
             # OH indices start at end of students region
-            graph[2 + i, student_end + oh] = 1
+            graph[2 + i, student_end + interval_index] = 1
         
-    # set the office hour capacities
-    graph[student_end:, SINK] = max_oh_cap
+    # set the office hour capacities; these arrays should match in length
+    graph[student_end:, SINK] = np.array(caps)
     
-    return csr_matrix(graph);
-    
+    return csr_matrix(graph)
 
-def schedule(students, office_hours, max_oh_cap):
-    graph = create_graph(students, office_hours, max_oh_cap)
+# students:
+# times: individual 15-min time blocks
+# caps: corresponding capacities of those time blocks
+def schedule(students, times, caps):
+    graph = create_graph(students, times, caps)
     
     # compute a flow graph with max flow
     flow = maximum_flow(graph, SOURCE, SINK).residual.toarray()
@@ -57,28 +63,11 @@ def schedule(students, office_hours, max_oh_cap):
     outflow = flow[2:student_end, student_end:]
     
     # store the outflux information into the student nodes
+    schedules = []
     for i, student_row in enumerate(outflow):
         if 1 in student_row:
-            # student was successfully scheduled
-            students[i].assignment = office_hours[list(student_row)].index(1)
-        else:
-            # don't need to return this student, since didn't schedule anything for them
-            students.pop(i)
+            # student was successfully scheduled; create a Schedule object
+            # with their student ID and the time they were scheduled
+            schedules.append(Schedule(students[i].id, times[student_row.index(1)]))
             
-    return students
-
-"""def test(num_students, num_oh, oh_cap):
-    oh = list(range(num_oh))
-    students = []
-
-    for _ in range(num_students):
-        avail = np.sort(np.random.choice(oh, size=1 + np.random.randint(len(oh) - 1), replace=False))
-        
-        students.append(Student(avail))
-
-    schedule(students, oh, oh_cap)
-
-    for i, student in enumerate(students):
-        print("Student " + str(i) + " assigned to " + str(student.assignment) + " (available: " + str(student.avails) + ")")
-
-test(20, 5, 4)"""
+    return schedules
