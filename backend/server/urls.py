@@ -16,6 +16,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from server.views.ca import CACreate, CAItem
+from server.views.schedule import ScheduleItem, ScheduleList
+from server.views.session import SessionItem, SessionItemState, SessionList
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('cas/', CACreate),
+    path('cas/<str>:ca_id', CAItem),
+    path('schedule/', ScheduleList),
+    path('schedule/<str:schedule_id>', ScheduleItem),
+    path('selection/', ScheduleList),
+    path('selection/<str:selection_id>', ScheduleItem),
+    path('session/', SessionList),
+    path('session/<str:sess_id>/state', SessionItemState),
+    path('session/<str:sess_id>', SessionItem),
 ]
