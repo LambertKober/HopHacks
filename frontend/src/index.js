@@ -7,7 +7,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 import FullCalendarApp from './components/calendar'
 
 
-
 ReactDOM.render(<FullCalendarApp />,document.getElementById('root'));
 
 

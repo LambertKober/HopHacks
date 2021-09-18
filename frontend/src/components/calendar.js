@@ -1,17 +1,27 @@
-import FullCalendar from '@fullcalendar/react';
-import dayGridPlugin from '@fullcalendar/daygrid';
-import timeGridPlugin from '@fullcalendar/timegrid';
-import interactionPlugin from '@fullcalendar/interaction';
+import ScheduleSelector from 'react-schedule-selector';
+import React from 'react';
 
-function FullCalendarApp() {
-    return (
-        <div className="App">
-            <FullCalendar
-                plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-                initialView="dayGridMonth"
+
+
+class FullCalendarApp extends React.Component {
+    state = { schedule: [] }
+
+    handleChange = newSchedule => {
+        this.setState({ schedule: newSchedule })
+    }
+
+    render() {
+        return (
+            <ScheduleSelector
+                selection={this.state.schedule}
+                numDays={5}
+                minTime={8}
+                maxTime={22}
+                hourlyChunks={2}
+                onChange={this.handleChange}
             />
-        </div>
-    );
+        )
+    }
 }
 
 export default FullCalendarApp;
