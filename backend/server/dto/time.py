@@ -15,11 +15,12 @@ class TimeBlock:
 
     @staticmethod
     def list_from_sorted_starts(start_times: list[datetime], interval_m: int):
-        output: list[TimeBlock] = []
+        output: list[TimeBlock] = [TimeBlock(start_times[0], start_times[0] + timedelta(minutes=interval_m), interval_m)]
         cur = 0
-        for start_time in start_times[1::]:
-            if start_time - output[cur].end > timedelta(minutes=interval_m):
-                output += TimeBlock(start_time, start_time + timedelta(minutes=interval_m), interval_m)
+        for start_time in start_times:
+            if start_time - output[cur].end > timedelta(0):
+                output.append(TimeBlock(start_time, start_time + timedelta(minutes=interval_m), interval_m))
+                cur += 1
             else:
                 output[cur].end = start_time + timedelta(minutes=interval_m)
         return output

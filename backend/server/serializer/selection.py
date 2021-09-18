@@ -1,9 +1,9 @@
 from rest_framework.serializers import ModelSerializer
 
-from server.model.schedule import ScheduleSlot
+from server.model.session import Session
 
 
-class ScheduleSerializer(ModelSerializer):
+class SelectionSerializer(ModelSerializer):
     class Meta:
-        model = ScheduleSlot
+        model = Session
         fields = {'uuid', 'startTime', 'endTime', 'student'}

@@ -1,5 +1,5 @@
-import scheduler
-import datetime
+from scheduler import Student, schedule
+
 
 def get_times_and_caps(sessions):
     time_to_cap = {}

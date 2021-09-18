@@ -26,9 +26,9 @@ urlpatterns = [
     path('cas/<str>:ca_id', CAItem),
     path('schedule/', ScheduleList),
     path('schedule/<str:schedule_id>', ScheduleItem),
-    path('selection/', ScheduleList),
-    path('selection/<str:selection_id>', ScheduleItem),
+    path('students/', ScheduleList),
+    path('students/<str:selection_id>', ScheduleItem),
     path('session/', SessionList),
-    path('session/<str:sess_id>/state', SessionItemState),
+    # path('session/<str:sess_id>/state', SessionItemState),
     path('session/<str:sess_id>', SessionItem),
 ]

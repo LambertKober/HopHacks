@@ -4,8 +4,10 @@ from rest_framework.mixins import DestroyModelMixin, RetrieveModelMixin, UpdateM
 from rest_framework.views import APIView
 
 from server.serializer.session import SessionSerializer
+from server.scheduler.process import schedule_students
 from server.model.selection import Selection
 from server.model.session import Session
+from server.transformer.scheduler import to_session_dtos, to_selection_dtos, to_schedule_model
 
 
 class SessionList(ListCreateAPIView):
@@ -38,5 +40,9 @@ class SessionItemState(APIView):
         return Session.objects.filter(id__exact=sess_id)
 
     def get(self, request, sess_id, *args, **kwargs):
-        session = Session.objects.all()
+        sessions = Session.objects.all()
         selections = Selection.objects.all()
+        return to_schedule_model(
+            schedule_students(to_session_dtos(sessions),
+                              to_selection_dtos(selections))
+        )
