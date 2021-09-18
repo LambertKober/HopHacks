@@ -8,9 +8,6 @@ from scipy.sparse.csgraph import maximum_flow
 # selected time blocks are sent in the same format as they are stored in the students
 # (e.g. not just in time slot ranges, but in individual time slots)
 
-#SOURCE = -2
-#SINK = -1
-
 SOURCE = 0
 SINK = 1
 
