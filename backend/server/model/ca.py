@@ -2,6 +2,6 @@ from django.db import models
 
 
 class CA(models.Model):
-    id = models.UUIDField
+    uuid = models.UUIDField
     name = models.TextField
     description = models.TextField
