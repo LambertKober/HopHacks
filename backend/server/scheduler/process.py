@@ -1,12 +1,6 @@
 import scheduler
 import datetime
 
-# a class representing a single 15-minute time instance and its corresponding capacity
-def Interval:
-    def __init__(self, start_time, capacity):
-        self.start_time = start_time
-        self.capacity = capacity
-
 def get_times_and_caps(sessions):
     time_to_cap = {}
     
