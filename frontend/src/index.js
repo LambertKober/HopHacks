@@ -4,10 +4,12 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
-import FullCalendarApp from './components/calendar'
+import FullCalendarApp from './components/calendar';
+import LandingApp from './components/landing';
 
 
 ReactDOM.render(<FullCalendarApp />,document.getElementById('root'));
+ReactDOM.render(<LandingApp />,document.getElementById('root'));
 
 
 
