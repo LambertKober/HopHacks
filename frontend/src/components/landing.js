@@ -7,7 +7,7 @@ function LandingApp(props) {
     return (
         <div class="container">
             <br/>
-            <h1>Welcome to TicketOH!</h1>
+            <h1 style={{display: "inline"}}>Welcome to&nbsp;</h1><nobr/><h1 style={{color: "#edcb21 ", display: "inline"}}>TicketOH!</h1>
             <br/>
             <br/>
             <Container>
@@ -15,14 +15,14 @@ function LandingApp(props) {
                     <Col>
                         <Link class="nav-link" to="/calendar">
                             <button type="button" className="btn btn-primary button">
-                                Click here if you are a student!
+                                <h2>Click here if you are a student!</h2>
                             </button>
                         </Link>
                     </Col>
                     <Col>
                         <Link class="nav-link" to="/calendar">
                             <button type="button" className="btn btn-secondary button">
-                                Click here if you are a CA!
+                                <h2>Click here if you are a CA!</h2>
                             </button>
                         </Link>
                     </Col>
