@@ -12,9 +12,10 @@ SOURCE = 0
 SINK = 1
 
 class Student:
-    def __init__(self, oh):
+    def __init__(self, id, oh):
         # the final assigned OH
-        self.assignment = None
+        #self.assignment = None
+        self.id = id
         self.avails = oh
 
 def create_graph(students, office_hours, max_oh_cap):
@@ -46,10 +47,10 @@ def create_graph(students, office_hours, max_oh_cap):
     
 
 def schedule(students, office_hours, max_oh_cap):
-    cap = create_graph(students, office_hours, max_oh_cap)
+    graph = create_graph(students, office_hours, max_oh_cap)
     
     # compute a flow graph with max flow
-    flow = maximum_flow(cap, SOURCE, SINK).residual.toarray()
+    flow = maximum_flow(graph, SOURCE, SINK).residual.toarray()
     
     # consider the subset of the matrix representing the outflow from the student nodes
     student_end = 2 + len(students)
@@ -59,9 +60,14 @@ def schedule(students, office_hours, max_oh_cap):
     for i, student_row in enumerate(outflow):
         if 1 in student_row:
             # student was successfully scheduled
-            students[i].assignment = list(student_row).index(1)
+            students[i].assignment = office_hours[list(student_row)].index(1)
+        else:
+            # don't need to return this student, since didn't schedule anything for them
+            students.pop(i)
+            
+    return students
 
-def test(num_students, num_oh, oh_cap):
+"""def test(num_students, num_oh, oh_cap):
     oh = list(range(num_oh))
     students = []
 
@@ -75,4 +81,4 @@ def test(num_students, num_oh, oh_cap):
     for i, student in enumerate(students):
         print("Student " + str(i) + " assigned to " + str(student.assignment) + " (available: " + str(student.avails) + ")")
 
-test(20, 5, 4)
+test(20, 5, 4)"""
