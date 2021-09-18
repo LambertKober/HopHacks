@@ -4,8 +4,12 @@ from server.model.ca import CA
 
 
 class Session(models.Model):
-    id = models.UUIDField
+    class Status(models.IntegerChoices):
+        SCHEDULED = 1,
+        STARTED = 2
     name = models.TextField
-    stopTime = models.DateTimeField
-    student = models.ForeignKey(CA)
-    status = models.IntegerField
+    startTime = models.DateTimeField
+    endTime = models.DateTimeField
+    ca = models.ForeignKey(CA)
+    studentLimit = models.IntegerField
+    status = models.IntegerField(choices=Status.choices)

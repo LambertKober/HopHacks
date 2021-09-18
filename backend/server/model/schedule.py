@@ -3,8 +3,8 @@ from django.db import models
 from server.model.student import Student
 
 
-class Schedule(models.Model):
-    id = models.UUIDField(primary_key=True)
+class ScheduleSlot(models.Model):
+    uuid = models.UUIDField
     startTime = models.DateTimeField
     stopTime = models.DateTimeField
-    student = models.ForeignKey(Student)
+    student = models.OneToOneRel(Student)

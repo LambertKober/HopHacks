@@ -6,4 +6,4 @@ from server.model.session import Session
 class SessionSerializer(ModelSerializer):
     class Meta:
         model = Session
-        fields = {'id', 'name', 'stopTime', 'student'}
+        fields = {'uuid', 'name', 'stopTime', 'student'}

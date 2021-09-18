@@ -6,4 +6,4 @@ from server.model.ca import CA
 class CASerializer(ModelSerializer):
     class Meta:
         model = CA
-        fields = {'id', 'name', 'description'}
+        fields = {'uuid', 'name', 'description'}
