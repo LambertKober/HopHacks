@@ -24,11 +24,11 @@ class FullCalendarApp extends React.Component {
         this.oh_times[d4.toString()] = 1;
     }
 
-    handleSubmit = () => {
+    handleSubmit() {
         let mp = this.state.schedule;
         let res = [];
-        for (let i = 0; i < mp.length; i++) {
-            let d1 = mp[i];
+
+        for (const d1 of mp) {
             if (this.oh_times[format(d1).toString()] === 1) {
                 res.push(format(d1).toString());
             }
