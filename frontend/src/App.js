@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import FullCalendarApp from "./components/calendar"
 import NavBar from "./components/navbar";
+import BootstrapModal from "./components/login_modal.js";
 import {useState} from "react";
 
 

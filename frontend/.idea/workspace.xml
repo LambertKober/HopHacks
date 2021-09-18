@@ -20,13 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba35d854-ba8e-40f9-9ea4-c830de42feb6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/icon.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/navbar.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/login_modal.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/calendar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/calendar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navbar.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -121,7 +118,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1631936001781</updated>
-      <workItem from="1631936003014" duration="35342000" />
+      <workItem from="1631936003014" duration="39158000" />
     </task>
     <servers />
   </component>
@@ -140,10 +137,10 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="457" y="271" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1631957562925">
+    <state x="457" y="271" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1631997714461">
       <screen x="0" y="25" width="1440" height="875" />
     </state>
-    <state x="457" y="271" key="#com.intellij.fileTypes.FileTypeChooser/0.25.1440.875@0.25.1440.875" timestamp="1631957562925" />
+    <state x="457" y="271" key="#com.intellij.fileTypes.FileTypeChooser/0.25.1440.875@0.25.1440.875" timestamp="1631997714461" />
     <state width="1400" height="237" key="GridCell.Tab.0.bottom" timestamp="1631940111801">
       <screen x="0" y="25" width="1440" height="875" />
     </state>
@@ -172,5 +169,9 @@
       <screen x="0" y="25" width="1440" height="875" />
     </state>
     <state x="150" y="146" key="new project wizard/0.25.1440.875@0.25.1440.875" timestamp="1631939923131" />
+    <state x="385" y="214" width="670" height="676" key="search.everywhere.popup" timestamp="1632000183681">
+      <screen x="0" y="25" width="1440" height="875" />
+    </state>
+    <state x="385" y="214" width="670" height="676" key="search.everywhere.popup/0.25.1440.875@0.25.1440.875" timestamp="1632000183681" />
   </component>
 </project>

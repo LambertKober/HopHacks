@@ -4,6 +4,8 @@ import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
 import icon from './icon.svg';
 import './navbar.css';
+import login_modal from './login_modal.js';
+import BootstrapModal from "./login_modal.js";
 
 
 function NavBar() {
@@ -43,13 +45,15 @@ function NavBar() {
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
           <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-                        <a class="nav-link active" href="#">Log In</a>
+                       {<BootstrapModal></BootstrapModal>}
                   </li>
             <li class="nav-item px-2">
               <button type="button" class="btn btn-outline-warning">Sign Up</button>
             </li>
           </ul>
+
         </div>
+
       </div>
     </nav>
 
