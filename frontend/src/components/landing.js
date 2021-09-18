@@ -1,32 +1,35 @@
 import React from 'react';
 import './landing.css';
 import { Container, Row, Col } from 'reactstrap';
+import {Link, withRouter} from "react-router-dom";
 
-class LandingApp extends React.Component {
-    render() {
-        return (
-            <div class="container">
-                <br/>
-                <h1>Welcome to TicketOH!</h1>
-                <br/>
-                <br/>
-                <Container>
-                    <Row>
-                        <Col>
+function LandingApp(props) {
+    return (
+        <div class="container">
+            <br/>
+            <h1>Welcome to TicketOH!</h1>
+            <br/>
+            <br/>
+            <Container>
+                <Row>
+                    <Col>
+                        <Link class="nav-link" to="/calendar">
                             <button type="button" className="btn btn-primary button">
                                 Click here if you are a student!
                             </button>
-                        </Col>
-                        <Col>
+                        </Link>
+                    </Col>
+                    <Col>
+                        <Link class="nav-link" to="/calendar">
                             <button type="button" className="btn btn-secondary button">
                                 Click here if you are a CA!
                             </button>
-                        </Col>
-                    </Row>
-                </Container>
-            </div>
-        )
-    }
+                        </Link>
+                    </Col>
+                </Row>
+            </Container>
+        </div>
+    )
 }
 
-export default LandingApp;
+export default withRouter(LandingApp);
