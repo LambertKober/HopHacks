@@ -1,6 +1,6 @@
 import ScheduleSelector from 'react-schedule-selector';
 import React from 'react';
-import { format } from 'date-fns'
+import { format , getMinutes} from 'date-fns'
 import './calendar.css';
 
 
@@ -42,11 +42,17 @@ class FullCalendarApp extends React.Component {
     }
 
     renderCell = (time, selected, innerRef) => {
-        if (this.oh_times[format(time).toString()] === 1) { //IF TIME IS OH, MARK CELL RED
+        if (this.oh_times[format(time).toString()] === 1) {
             return <div className={(selected) ? "box_close_hover" : "box_close"} ref={innerRef}></div>
             } else {
             return <div className={(selected) ? "box_open" : "box_open"} ref={innerRef}></div>
         }
+    }
+    renderLabel = (date) => {
+        if (getMinutes(date) === 0 || getMinutes(date) === 30) {
+            return <div>{format(date,"h:mma")}</div>;
+        }
+        return <div></div>
     }
 
     render() {
@@ -55,14 +61,15 @@ class FullCalendarApp extends React.Component {
                 <ScheduleSelector
                     selection={this.state.schedule}
                     numDays={7}
-                    minTime={8}
-                    maxTime={22}
+                    minTime={10}
+                    maxTime={20}
                     hourlyChunks={4}
                     onChange={this.handleChange}
-                    timeFormat={"HH:mm"}
+                    timeFormat={"HH:mma"}
                     dateFormat="ddd M/D"
                     selectionScheme="linear"
                     renderDateCell={this.renderCell}
+                    renderTimeLabel={this.renderLabel}
                 />
                 <div className="col text-center">
                         <button onClick={this.handleSubmit} type="button" className="btn btn-primary m-4" >Submit Availability</button>

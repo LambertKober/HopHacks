@@ -20,7 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba35d854-ba8e-40f9-9ea4-c830de42feb6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/navbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/calendar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/calendar.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/calendar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/calendar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
@@ -104,7 +106,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1631936001781</updated>
-      <workItem from="1631936003014" duration="21384000" />
+      <workItem from="1631936003014" duration="24318000" />
     </task>
     <servers />
   </component>
