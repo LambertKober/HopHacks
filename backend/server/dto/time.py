@@ -10,11 +10,11 @@ class TimeBlock:
     def to_start_times(self):
         output = []
         for i in range(0, (self.end - self.start)//self.td_interval):
-            output += self.start + self.td_interval
+            output.append(self.start + self.td_interval * i)
         return output
 
     @staticmethod
-    def list_from_sorted_starts(start_times: list[datetime], interval_m: int) -> list[TimeBlock]:
+    def list_from_sorted_starts(start_times: list[datetime], interval_m: int):
         output: list[TimeBlock] = []
         cur = 0
         for start_time in start_times[1::]:
