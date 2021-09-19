@@ -3,6 +3,8 @@ import { Button,Modal } from 'react-bootstrap'
 import {Link, withRouter} from "react-router-dom";
 import axios from "axios";
 
+// <Link class="nav-link" to="/calendar/CA/trey">
+
 function BootstrapModalCA(props) {
     let base_url = "localhost:8000"
     let uuid = ""
