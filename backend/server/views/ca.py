@@ -44,7 +44,7 @@ class CAItem(APIView, SessionMixin):
 
         # TODO: Make difflist instead
         ca.name = request.data.get("name")
-        ca.description = request.get("description")
+        ca.description = request.data.get("description")
         student_limit = 1
         if "studentLimit" in request.data:
             student_limit = request.data["studentLimit"]
