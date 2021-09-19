@@ -12,7 +12,7 @@ function BootstrapModalStudent(props) {
             <div className="modal-header" id="modal-header" >
                 <h4 className="modal-title" id="modal-title">Login</h4>
                 <button type="button" className="btn " onClick={() => props.onHide()}>✕</button>
-             </div>
+            </div>
             <Modal.Body>
                 <form>
                     <div>

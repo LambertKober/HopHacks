@@ -22,7 +22,7 @@ function App() {
                         <h1 style={{ marginTop: '2.5%' }}>Office Hour Schedule</h1>
                         <h5 style={{ marginBottom: '2%' }}>Drag to select multiple timeslots</h5>
                         <div className = "calendar_comp">
-                            <studentCalendarApp className = "calendar_comp"></studentCalendarApp>
+                            <CACalendarApp className = "calendar_comp"></CACalendarApp>
                         </div>
                     </div>} />
 

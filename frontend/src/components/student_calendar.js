@@ -55,8 +55,8 @@ class studentCalendarApp extends React.Component {
     renderCell = (time, selected, innerRef) => {
         if (this.oh_times[formatISO(time).toString()] === 1) {
             return <div className={(selected) ? "box_close_hover" : "box_close"} ref={innerRef}></div>
-            } else {
-            return <div className={(selected) ? "box_open" : "box_open"} ref={innerRef}></div>
+        } else {
+            return <div className={(selected) ? "box_open_hover" : "box_open"} ref={innerRef}></div>
         }
     }
     renderLabel = (date) => {
