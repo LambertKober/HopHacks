@@ -6,12 +6,14 @@ import axios from 'axios';
 // <Link class="nav-link" to="/calendar/student/trey">
 
 function BootstrapModalStudent(props) {
-    let base_url = "localhost:8000"
+    let base_url = "http://localhost:8000"
     let uuid = ""
-    const form = document.getElementById('Form');
+    const form = document.getElementById("Form");
 
-    const handleSubmit = () => {
-        let name = form.elements["Name"].value;
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        let name = event.target.elements.nameField.value;
+        console.log(name)
         axios.post(base_url + "/student", { "name": name })
             .then(res => {
                 uuid = res.data.uuid;
@@ -25,19 +27,19 @@ function BootstrapModalStudent(props) {
                 <button type="button" className="btn " onClick={() => props.onHide()}>✕</button>
             </div>
             <Modal.Body>
-                <form id="Form">
+                <form id="Form" onSubmit={handleSubmit}>
                     <div>
-                        <input className="form-control" placeholder="Username/Email"/>
-                        <p id="Name" className="form-text text-end">Enter Valid Username/Email</p>
+                        <input name="nameField" className="form-control" placeholder="Username/Email"/>
+                        <p className="form-text text-end">Enter Valid Username/Email</p>
                     </div>
                     <div className=" form-check w-100">
                         <label className="form-check-label">
                             <input type="checkbox" className="form-check-input"/> Remember Me
                         </label>
                     </div>
-                    <a button type="submit" className="btn btn-primary w-100 my-3 shadow" onClick={handleSubmit()}>
+                    <button type="submit" className="btn btn-primary w-100 my-3 shadow">
                         Login
-                    </a>
+                    </button>
                     <a className= "m-0" href="#">Not yet registered</a>
                 </form>
             </Modal.Body>
