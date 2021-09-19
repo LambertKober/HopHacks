@@ -14,6 +14,8 @@ class TimeBlockMixin:
 
 class SessionMixin:
     def create_sessions(self, ca, student_limit, time_slots):
+        if time_slots is None:
+            return
         timestamps = []
         for time_slot in time_slots:
             heapq.heappush(timestamps, isoparse(time_slot))
@@ -36,6 +38,8 @@ class SessionMixin:
 
 class SelectionMixin:
     def create_selections(self, student, time_slots):
+        if time_slots is None:
+            return
         timestamps = []
         for time_slot in time_slots:
             heapq.heappush(timestamps, isoparse(time_slot))
