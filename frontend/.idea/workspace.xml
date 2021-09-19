@@ -20,10 +20,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba35d854-ba8e-40f9-9ea4-c830de42feb6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/footer.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/footer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icon-black.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/login_modal.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/calendar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/calendar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/calendar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/calendar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/landing.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/landing.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/login_modal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/login_modal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/navbar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navbar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navbar.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +125,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1631936001781</updated>
-      <workItem from="1631936003014" duration="52324000" />
+      <workItem from="1631936003014" duration="61374000" />
     </task>
     <servers />
   </component>

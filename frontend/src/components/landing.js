@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './landing.css';
 import {Container, Row, Col} from 'react-bootstrap';
 import {withRouter} from "react-router-dom";
@@ -28,6 +28,7 @@ function Landing(props) {
                         <BootstrapModal show={modalShow} onHide={() => setShow(false) }/>
                     </Col>
                 </Row>
+                <div style={{'padding-bottom':'17%'}}></div>
             </Container>
         </div>
     )

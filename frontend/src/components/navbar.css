@@ -2,3 +2,9 @@
     margin-left: 10px ;
     margin-right: -10px ;
 }
+
+
+
+.navbar-nav .nav-item .nav-link {
+    color: white;
+}

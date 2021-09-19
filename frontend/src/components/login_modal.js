@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button,Modal } from 'react-bootstrap'
-import {Link, withRouter} from "react-router-dom";
+import {Link} from "react-router-dom";
+import './login_modal.css';
 
 function BootstrapModal(props) {
     const handleSubmit = () => {
@@ -9,7 +10,7 @@ function BootstrapModal(props) {
 
     return (
         <Modal{...props}>
-            <div className="modal-header" id="modal-header">
+            <div className="modal-header" id="modal-header" >
                 <h4 className="modal-title" id="modal-title">Login</h4>
                 <button type="button" className="btn " onClick={() => props.onHide()}>✕</button>
              </div>
@@ -42,12 +43,5 @@ function BootstrapModal(props) {
 }
 
 export default BootstrapModal;
-
-
-
-
-
-
-
 
 

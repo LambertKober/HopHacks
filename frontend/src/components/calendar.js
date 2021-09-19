@@ -71,7 +71,11 @@ class FullCalendarApp extends React.Component {
                     renderTimeLabel={this.renderLabel}
                 />
                 <div className="col text-center">
-                        <button onClick={this.handleSubmit} type="button" className="btn btn-primary m-4" >Submit Availability</button>
+
+                        <button onClick={this.handleSubmit} type="button" className="btn btn-primary m-4" style={{'width':'40%'}}>
+                            Submit Availability
+                        </button>
+                    <br/><br/><br/>
                 </div>
             </div>
         )

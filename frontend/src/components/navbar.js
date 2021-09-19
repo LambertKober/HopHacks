@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import icon from './icon.svg';
 import './navbar.css';
 import BootstrapModal from "./login_modal.js";
-import {Button} from 'react-bootstrap';
+import Popper from "popper.js";
+
 
 function NavBar() {
-
     const [modalShow, setModalShow] = React.useState(false);
 
     return (
+        <html lang="en">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark">
             <div class="container-fluid">
                 <div class="navbar-collapse collapse w-100 order-md-0 ">
@@ -19,18 +20,19 @@ function NavBar() {
                             </a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
                                 Courses
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">FAQ</a>
+                            <a class="nav-link "  href="#">FAQ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">About</a>
+                            <a class="nav-link " href="#">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">Team</a>
+                            <a class="nav-link " href="#">Team</a>
                         </li>
                     </ul>
                 </div>
@@ -41,10 +43,10 @@ function NavBar() {
                 </div>
                 <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <Button a class="nav-link active"  onClick={() => setModalShow(true)}>
+                        <li class="nav-item" style={{'margin-right':'3px'}}>
+                            <a class="nav-link " href="#"  onClick={() => setModalShow(true)}>
                                 Log In
-                            </Button>
+                            </a>
                             <BootstrapModal show={modalShow} onHide={() => setModalShow(false)}/>
                         </li>
                         <li class="nav-item px-2">
@@ -54,6 +56,7 @@ function NavBar() {
                 </div>
             </div>
         </nav>
+        </html>
     );
 }
 

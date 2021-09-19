@@ -1,10 +1,9 @@
-import logo from './logo.svg';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
 import FullCalendarApp from './components/calendar';
 import Landing from './components/landing';
 import NavBar from './components/navbar';
-import BootstrapModal from "./components/login_modal.js";
+import Footer from './components/footer';
 
 
 
@@ -24,7 +23,8 @@ function App() {
                         </div>
                     </div>} />
                 </Switch>
-            </Router>
+            <Footer/>
+        </Router>
         </div>
         // <div>
         //     <div ><NavBar></NavBar></div>
