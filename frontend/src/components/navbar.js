@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import icon from './icon.svg';
 import './navbar.css';
-import BootstrapModal from "./login_modal.js";
+import BootstrapModal from "./student_login_modal.js";
 import Popper from "popper.js";
 
 

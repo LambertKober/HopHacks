@@ -2,33 +2,33 @@ import React from 'react';
 import './landing.css';
 import {Container, Row, Col} from 'react-bootstrap';
 import {withRouter} from "react-router-dom";
-import BootstrapModal from "./login_modal.js";
+import BootstrapModalStudent from "./student_login_modal.js";
+import BootstrapModalCA from "./CA_login_modal.js";
 
 
 function Landing(props) {
-    const [modalShow, setShow] = React.useState(false);
+    const [modalShowStudent, setShowStudent] = React.useState(false);
+    const [modalShowCA, setShowCA] = React.useState(false);
+
 
     return (
         <div class="container">
-            <Container>
-                <br/>
-                <h1>Welcome to TicketOH!</h1>
-                <br/>
+            <Container style={{'width':'110%', 'margin-top':'9%'}}>
                 <Row>
                     <Col>
-                        <button type="button" className="btn btn-primary button" onClick={() => setShow(true)}>
-                            <h2>Click here if you are a student!</h2>
+                        <button type="button" className="btn btn-primary button" style={{'width':'95%'}} onClick={() => setShowStudent(true)}>
+                            Student
                         </button>
-                        <BootstrapModal show={modalShow} onHide={() => setShow(false)}/>
+                        <BootstrapModalStudent show={modalShowStudent} onHide={() => setShowStudent(false)}/>
                     </Col>
                     <Col>
-                        <button type="button" className="btn btn-secondary button" onClick={() => setShow(true)}>
-                            <h2>Click here if you are a CA!</h2>
+                        <button type="button" className="btn btn-secondary button" style={{'width':'95%'}} onClick={() => setShowCA(true)}>
+                            CA
                         </button>
-                        <BootstrapModal show={modalShow} onHide={() => setShow(false) }/>
+                        <BootstrapModalCA show={modalShowCA} onHide={() => setShowCA(false) }/>
                     </Col>
                 </Row>
-                <div style={{'padding-bottom':'17%'}}></div>
+                <div style={{'padding-bottom':'15.5%'}}></div>
             </Container>
         </div>
     )

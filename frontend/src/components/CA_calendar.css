@@ -1,0 +1,29 @@
+.box_open {
+    background-color: rgba(100, 160, 240, .2) ;
+    padding: 12px ;
+}
+.box_open:hover {
+    background-color: rgba(100, 160, 240, 1) ;
+    padding: 12px ;
+}
+.box_open_hover {
+    background-color: rgba(100, 160, 240, 1) ;
+    padding: 12px ;
+}
+
+
+.box_close {
+    background-color: rgba(180, 120, 160, .6);
+    padding: 12px ;
+}
+
+.box_close_hover {
+    background-color: rgba(180, 120, 160, 1);
+    padding: 12px ;
+}
+
+.box_close:hover {
+    background-color: rgba(180, 120, 160, 1);
+    padding: 12px ;
+}
+

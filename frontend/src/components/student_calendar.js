@@ -1,26 +1,38 @@
 import ScheduleSelector from 'react-schedule-selector'; //from https://www.npmjs.com/package/react-schedule-selector
 import React from 'react';
 import {format, formatISO , getMinutes} from 'date-fns';
-import './calendar.css';
+import './student_calendar.css';
+import studentModalInfo from "./student_modal_info.js";
 
 
-
-class FullCalendarApp extends React.Component {
+class studentCalendarApp extends React.Component {
     state = {
+        // modalShow: false,
         schedule: []
     }
 
     constructor() {
         super();
         this.oh_times = new Map();
-        let d1 = formatISO(new Date(2021, 8, 20, 12, 0));
-        let d2 = formatISO(new Date(2021, 8, 20, 12, 15));
-        let d3 = formatISO(new Date(2021, 8, 20, 12, 30));
-        let d4 = formatISO(new Date(2021, 8, 20, 12, 45));
-        this.oh_times[d1.toString()] = 1;
-        this.oh_times[d2.toString()] = 1;
-        this.oh_times[d3.toString()] = 1;
-        this.oh_times[d4.toString()] = 1;
+        for (let i = 0; i < 60; i+=15) {
+            let d1 = formatISO(new Date(2021, 8, 24, 15, i));
+            let d2 = formatISO(new Date(2021, 8, 22, 12, i));
+            let d3 = formatISO(new Date(2021, 8, 20, 12, i));
+            let d4 = formatISO(new Date(2021, 8, 20, 18, i));
+            let d5 = formatISO(new Date(2021, 8, 21, 14, i));
+            let d6 = formatISO(new Date(2021, 8, 22, 14, 45+i));
+            let d7 = formatISO(new Date(2021, 8, 21, 17, i));
+            let d8 = formatISO(new Date(2021, 8, 21, 17, 45+i));
+            this.oh_times[d1.toString()] = 1;
+            this.oh_times[d2.toString()] = 1;
+            this.oh_times[d3.toString()] = 1;
+            this.oh_times[d4.toString()] = 1;
+            this.oh_times[d5.toString()] = 1;
+            this.oh_times[d6.toString()] = 1;
+            this.oh_times[d7.toString()] = 1;
+            this.oh_times[d8.toString()] = 1;
+        }
+
     }
 
     handleSubmit = () => {
@@ -71,10 +83,7 @@ class FullCalendarApp extends React.Component {
                     renderTimeLabel={this.renderLabel}
                 />
                 <div className="col text-center">
-
-                        <button onClick={this.handleSubmit} type="button" className="btn btn-primary m-4" style={{'width':'40%'}}>
-                            Submit Availability
-                        </button>
+                        <studentModalInfo/>
                     <br/><br/><br/>
                 </div>
             </div>
@@ -82,4 +91,4 @@ class FullCalendarApp extends React.Component {
     }
 }
 
-export default FullCalendarApp;
+export default studentCalendarApp;

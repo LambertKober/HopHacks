@@ -1,9 +1,8 @@
 import React from 'react'
 import { Button,Modal } from 'react-bootstrap'
 import {Link} from "react-router-dom";
-import './login_modal.css';
 
-function BootstrapModal(props) {
+function BootstrapModalCA(props) {
     const handleSubmit = () => {
         console.log("NAME SUBMISSION HERE");
     };
@@ -13,7 +12,7 @@ function BootstrapModal(props) {
             <div className="modal-header" id="modal-header" >
                 <h4 className="modal-title" id="modal-title">Login</h4>
                 <button type="button" className="btn " onClick={() => props.onHide()}>✕</button>
-             </div>
+            </div>
             <Modal.Body>
                 <form>
                     <div>
@@ -25,7 +24,7 @@ function BootstrapModal(props) {
                             <input type="checkbox" className="form-check-input"/> Remember Me
                         </label>
                     </div>
-                    <Link class="nav-link" to="/calendar">
+                    <Link class="nav-link" to="/calendar_ca">
                         <a button type="submit" className="btn btn-primary w-100 my-3 shadow" onClick={handleSubmit()}>
                             Login
                         </a>
@@ -42,6 +41,6 @@ function BootstrapModal(props) {
     );
 }
 
-export default BootstrapModal;
+export default BootstrapModalCA;
 
 
