@@ -7,7 +7,7 @@ import { withRouter } from "react-router-dom";
 import axios from 'axios';
 
 
-class StudentCalendarApp extends React.Component {
+class CACalendarApp extends React.Component {
 
     state = {
         uuid: "",
@@ -18,7 +18,7 @@ class StudentCalendarApp extends React.Component {
 
     constructor() {
         super();
-        let d1 = formatISO(new Date(2021, 8, 20, 12, 0));
+        let d1 = formatISO(new Date(2021, 8, 20, 12, 0),"");
         let d2 = formatISO(new Date(2021, 8, 20, 12, 15));
         let d3 = formatISO(new Date(2021, 8, 20, 12, 30));
         let d4 = formatISO(new Date(2021, 8, 20, 12, 45));
@@ -53,7 +53,7 @@ class StudentCalendarApp extends React.Component {
     renderCell = (time, selected, innerRef) => {
         if (this.state.oh_times[formatISO(time).toString()] === 1) {
             return <div className={(selected) ? "box_close_hover" : "box_close"} ref={innerRef}></div>
-            } else {
+        } else {
             return <div className={(selected) ? "box_open" : "box_open"} ref={innerRef}></div>
         }
     }
@@ -86,11 +86,11 @@ class StudentCalendarApp extends React.Component {
                     renderTimeLabel={this.renderLabel}
                 />
                 <div className="col text-center">
-                        <button onClick={this.handleSubmit.bind(this)} type="button" className="btn btn-primary m-4" >Submit Availability</button>
+                    <button onClick={this.handleSubmit.bind(this)} type="button" className="btn btn-primary m-4" >Submit Availability</button>
                 </div>
             </div>
         )
     }
 }
 
-export default withRouter(StudentCalendarApp);
+export default withRouter(CACalendarApp);
