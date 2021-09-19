@@ -14,7 +14,7 @@ function BootstrapModalCA(props) {
         event.preventDefault()
         let name = event.target.elements.nameField.value;
         console.log(name)
-        axios.post(base_url + "/cas", { "name": name })
+        axios.post(base_url + "/cas/", { "name": name })
             .then(res => {
                 uuid = res.data.uuid;
             })
