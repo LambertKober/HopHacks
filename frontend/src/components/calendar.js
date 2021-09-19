@@ -1,7 +1,8 @@
-import ScheduleSelector from 'react-schedule-selector';
+import ScheduleSelector from 'react-schedule-selector'; //from https://www.npmjs.com/package/react-schedule-selector
 import React from 'react';
-import {format , getMinutes} from 'date-fns'
+import {format, formatISO , getMinutes} from 'date-fns';
 import './calendar.css';
+
 
 
 class FullCalendarApp extends React.Component {
@@ -12,10 +13,10 @@ class FullCalendarApp extends React.Component {
     constructor() {
         super();
         this.oh_times = new Map();
-        let d1 = format(new Date(2021, 8, 20, 12, 0));
-        let d2 = format(new Date(2021, 8, 20, 12, 15));
-        let d3 = format(new Date(2021, 8, 20, 12, 30));
-        let d4 = format(new Date(2021, 8, 20, 12, 45));
+        let d1 = formatISO(new Date(2021, 8, 20, 12, 0));
+        let d2 = formatISO(new Date(2021, 8, 20, 12, 15));
+        let d3 = formatISO(new Date(2021, 8, 20, 12, 30));
+        let d4 = formatISO(new Date(2021, 8, 20, 12, 45));
         this.oh_times[d1.toString()] = 1;
         this.oh_times[d2.toString()] = 1;
         this.oh_times[d3.toString()] = 1;
@@ -27,8 +28,8 @@ class FullCalendarApp extends React.Component {
         let res = [];
         for (let i = 0; i < mp.length; i++) {
             let d1 = mp[i];
-            if (this.oh_times[format(d1).toString()] === 1) {
-                res.push(format(d1).toString());
+            if (this.oh_times[formatISO(d1).toString()] === 1) {
+                res.push(formatISO(d1).toString());
             }
         }
         console.log(res);
@@ -40,7 +41,7 @@ class FullCalendarApp extends React.Component {
     }
 
     renderCell = (time, selected, innerRef) => {
-        if (this.oh_times[format(time).toString()] === 1) {
+        if (this.oh_times[formatISO(time).toString()] === 1) {
             return <div className={(selected) ? "box_close_hover" : "box_close"} ref={innerRef}></div>
             } else {
             return <div className={(selected) ? "box_open" : "box_open"} ref={innerRef}></div>
@@ -48,7 +49,7 @@ class FullCalendarApp extends React.Component {
     }
     renderLabel = (date) => {
         if (getMinutes(date) === 0 || getMinutes(date) === 30) {
-            return <div>{format(date,"h:mma")}</div>;
+            return <div>{format(date,"hh:mma")}</div>;
         }
         return <div></div>
     }
@@ -63,7 +64,7 @@ class FullCalendarApp extends React.Component {
                     maxTime={20}
                     hourlyChunks={4}
                     onChange={this.handleChange}
-                    timeFormat={"HH:mma"}
+                    timeFormat={"DD:HH:mm"}
                     dateFormat="ddd M/D"
                     selectionScheme="linear"
                     renderDateCell={this.renderCell}

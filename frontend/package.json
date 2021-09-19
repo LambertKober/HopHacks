@@ -17,6 +17,7 @@
     "react-bootstrap": "^1.6.3",
     "react-bootstrap-navbar": "^1.1.0",
     "react-dom": "^17.0.2",
+    "react-moment": "^1.1.1",
     "react-router-dom": "^5.3.0",
     "react-schedule-selector": "^3.0.0",
     "react-scripts": "4.0.3",
@@ -63,5 +64,11 @@
     "plugins": [
       "@babel/plugin-proposal-class-properties"
     ]
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "devDependencies": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
