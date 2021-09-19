@@ -1,6 +1,6 @@
 import ScheduleSelector from 'react-schedule-selector';
 import React from 'react';
-import { format , getMinutes} from 'date-fns'
+import {format , getMinutes} from 'date-fns'
 import './calendar.css';
 
 
@@ -8,8 +8,6 @@ class FullCalendarApp extends React.Component {
     state = {
         schedule: []
     }
-
-    // let oh_times = new Map();
 
     constructor() {
         super();
@@ -24,11 +22,11 @@ class FullCalendarApp extends React.Component {
         this.oh_times[d4.toString()] = 1;
     }
 
-    handleSubmit() {
+    handleSubmit = () => {
         let mp = this.state.schedule;
         let res = [];
-
-        for (const d1 of mp) {
+        for (let i = 0; i < mp.length; i++) {
+            let d1 = mp[i];
             if (this.oh_times[format(d1).toString()] === 1) {
                 res.push(format(d1).toString());
             }

@@ -1,0 +1,17 @@
+.container {
+    text-align: center;
+    width: 100%;
+}
+
+.button {
+    border-radius: 30px;
+    width: 500px;
+    height: 400px;
+    font-size: 150%;
+}
+
+.divider {
+    width:100px;
+    height:auto;
+    display:inline-block;
+}
