@@ -1,23 +1,23 @@
 import React from 'react'
 import { Button,Modal } from 'react-bootstrap'
-import {Link, withRouter} from "react-router-dom";
+import {Link, useHistory, withRouter} from "react-router-dom";
 import axios from 'axios';
 
 // <Link class="nav-link" to="/calendar/student/trey">
 
+
 function BootstrapModalStudent(props) {
     let base_url = "http://localhost:8000"
-    let uuid = ""
-    const form = document.getElementById("Form");
+    const history = useHistory();
 
     const handleSubmit = (event) => {
         event.preventDefault()
         let name = event.target.elements.nameField.value;
-        console.log(name)
-        axios.post(base_url + "/students/", { "name": name })
-            .then(res => {
-                uuid = res.data.uuid;
-            })
+        //console.log(name)
+        axios.get(`${base_url}/sessions/`)
+            .then(res => {/* set calendar component state here */})
+            .then(() => axios.post(`${base_url}/students/`, { "name": name }))
+            .then(res => history.push(`/calendar/student/${res.data.uuid}`))
     };
 
     return (
@@ -52,4 +52,4 @@ function BootstrapModalStudent(props) {
     );
 }
 
-export default BootstrapModalStudent;
+export default withRouter(BootstrapModalStudent);
