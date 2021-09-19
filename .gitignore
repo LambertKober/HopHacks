@@ -1,4 +1,3 @@
-
 # Created by https://www.toptal.com/developers/gitignore/api/macos,linux,react,python,django
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,linux,react,python,django
 
@@ -273,5 +272,5 @@ psd
 thumb
 sketch
 
-# End of https://www.toptal.com/developers/gitignore/api/macos,linux,react,python,django
-
+# End of
+# https://www.toptal.com/developers/gitignore/api/macos,linux,react,python,django
