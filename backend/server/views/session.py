@@ -39,10 +39,10 @@ class SessionItemState(APIView):
     def get(self, request, sess_id, *args, **kwargs):
         return Session.objects.filter(id__exact=sess_id)
 
-    def get(self, request, sess_id, *args, **kwargs):
+    def post(self, request, sess_id, *args, **kwargs):
         sessions = Session.objects.all()
         selections = Selection.objects.all()
-        return to_schedule_model(
-            schedule_students(to_session_dtos(sessions),
-                              to_selection_dtos(selections))
-        )
+        models = to_schedule_model(schedule_students(to_session_dtos(sessions),
+                                                     to_selection_dtos(selections)))
+        for model in models:
+            model.save()
