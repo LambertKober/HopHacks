@@ -1,10 +1,21 @@
 import React from 'react'
 import { Button,Modal } from 'react-bootstrap'
 import {Link, withRouter} from "react-router-dom";
+import axios from 'axios';
+
+// <Link class="nav-link" to="/calendar/student/trey">
 
 function BootstrapModalStudent(props) {
+    let base_url = "localhost:8000"
+    let uuid = ""
+    const form = document.getElementById('Form');
+
     const handleSubmit = () => {
-        console.log("NAME SUBMISSION HERE");
+        let name = form.elements["Name"].value;
+        axios.post(base_url + "/student", { "name": name })
+            .then(res => {
+                uuid = res.data.uuid;
+            })
     };
 
     return (
@@ -14,21 +25,19 @@ function BootstrapModalStudent(props) {
                 <button type="button" className="btn " onClick={() => props.onHide()}>✕</button>
             </div>
             <Modal.Body>
-                <form>
+                <form id="Form">
                     <div>
                         <input className="form-control" placeholder="Username/Email"/>
-                        <p className="form-text text-end">Enter Valid Username/Email</p>
+                        <p id="Name" className="form-text text-end">Enter Valid Username/Email</p>
                     </div>
                     <div className=" form-check w-100">
                         <label className="form-check-label">
                             <input type="checkbox" className="form-check-input"/> Remember Me
                         </label>
                     </div>
-                    <Link class="nav-link" to="/calendar/student/trey">
-                        <a button type="submit" className="btn btn-primary w-100 my-3 shadow" onClick={handleSubmit()}>
-                            Login
-                        </a>
-                    </Link>
+                    <a button type="submit" className="btn btn-primary w-100 my-3 shadow" onClick={handleSubmit()}>
+                        Login
+                    </a>
                     <a className= "m-0" href="#">Not yet registered</a>
                 </form>
             </Modal.Body>
