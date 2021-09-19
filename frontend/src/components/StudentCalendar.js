@@ -2,14 +2,19 @@ import ScheduleSelector from 'react-schedule-selector';
 import React from 'react';
 import { format , getMinutes} from 'date-fns'
 import './calendar.css';
+import { useParams } from 'react-router-dom';
+import { withRouter } from "react-router-dom";
+import axios from 'axios';
 
 
-class FullCalendarApp extends React.Component {
+class StudentCalendarApp extends React.Component {
+
     state = {
+        uuid: this.props.match.params.uuid,
+        base_url: "",
+        oh_times: [],
         schedule: []
     }
-
-    // let oh_times = new Map();
 
     constructor() {
         super();
@@ -33,7 +38,11 @@ class FullCalendarApp extends React.Component {
                 res.push(format(d1).toString());
             }
         }
-        console.log(res);
+        let selection = {};
+        selection.UUID = this.state.uuid;
+        selection.timeSlots = res;
+        axios.post("/student", { selection })
+            .then(res => {})
     }
 
 
@@ -79,4 +88,4 @@ class FullCalendarApp extends React.Component {
     }
 }
 
-export default FullCalendarApp;
+export default withRouter(StudentCalendarApp);
