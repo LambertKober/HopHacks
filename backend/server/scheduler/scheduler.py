@@ -33,7 +33,7 @@ def create_graph(students, times, caps):
     student_end = 2 + len(students)
     
     # + 2 for the source and sink nodes
-    num_nodes = student_end + len(intervals)
+    num_nodes = student_end + len(times)
     
     graph = np.zeros((num_nodes, num_nodes), dtype=np.int)
     
@@ -72,6 +72,6 @@ def schedule(students, times, caps):
         if 1 in student_row:
             # student was successfully scheduled; create a Schedule object
             # with their student ID and the time they were scheduled
-            schedules.append(Schedule(students[i].id, times[student_row.index(1)]))
+            schedules.append(Schedule(students[i].id, times[list(student_row).index(1)]))
             
     return schedules

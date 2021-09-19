@@ -1,8 +1,11 @@
 from django.http import Http404
+from rest_framework import status
 from rest_framework.generics import GenericAPIView, ListCreateAPIView
 from rest_framework.mixins import DestroyModelMixin, RetrieveModelMixin, UpdateModelMixin
+from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from server.serializer.schedule import ScheduleSerializer
 from server.serializer.session import SessionSerializer
 from server.scheduler.process import schedule_students
 from server.model.selection import Selection
@@ -21,9 +24,13 @@ class SessionItem(RetrieveModelMixin,
                   GenericAPIView):
     serializer_class = SessionSerializer
 
-    def get_queryset(self):
+    def get_queryset(self, *args, **kwargs):
         sess_id = self.kwargs['sess_id']
-        return Session.objects.filter(id__exact=sess_id)
+        return Session.objects.filter(uuid__exact=sess_id)
+
+    def get_object(self, *args, **kwargs):
+        sess_id = self.kwargs['sess_id']
+        return Session.objects.filter(uuid__exact=sess_id).get()
 
     def get(self, request, *args, **kwargs):
         return self.retrieve(request, *args, **kwargs)
@@ -37,7 +44,8 @@ class SessionItem(RetrieveModelMixin,
 
 class SessionItemState(APIView):
     def get(self, request, sess_id, *args, **kwargs):
-        return Session.objects.filter(id__exact=sess_id)
+        serializer = SessionSerializer(Session.objects.filter(uuid__exact=sess_id).get())
+        return Response(serializer.data)
 
     def post(self, request, sess_id, *args, **kwargs):
         sessions = Session.objects.all()
@@ -46,3 +54,5 @@ class SessionItemState(APIView):
                                                      to_selection_dtos(selections)))
         for model in models:
             model.save()
+
+        return Response(ScheduleSerializer(models, many=True).data, status.HTTP_200_OK)

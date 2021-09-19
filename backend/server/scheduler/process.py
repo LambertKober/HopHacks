@@ -7,17 +7,17 @@ def get_times_and_caps(sessions):
     # convert each session to its component time blocks, then
     # merge any overlap by adding the capacities together
     for session in sessions:
-        session_times = session.to_start_times()
+        session_times = session.timeblock.to_start_times()
         for time in session_times:
             if time in time_to_cap.keys():
                 # already have this block, so just add the times together
-                time_to_cap[time] += session.capacity
+                time_to_cap[time] += session.max_students
             else:
                 # don't have this block, so insert the time
-                time_to_cap[time] = session.capacity
+                time_to_cap[time] = session.max_students
                 
     # convert the dictionary to two parallel lists for ease of use in the scheduler
-    return time_to_cap.keys(), time_to_cap.values()
+    return list(time_to_cap.keys()), list(time_to_cap.values())
                 
                 
 def time_to_interval_index(time, intervals):
@@ -86,8 +86,10 @@ def schedule_students(sessions, selections):
         selected_times = []
         for t in selection.timeblocks:
             selected_times += t.to_start_times()
-        
+
+        print(selected_times)
+        print(times)
         inds = [times.index(t) for t in selected_times]
-        students.append(Student(selection.student_id, inds))
+        students.append(Student(selection.student_uuid, inds))
         
     return schedule(students, times, caps)
