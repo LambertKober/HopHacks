@@ -4,7 +4,7 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
 
-import FullCalendarApp from './components/calendar'
+import StudentCalendarApp from './components/StudentCalendar'
 import App from "./App";
 
 

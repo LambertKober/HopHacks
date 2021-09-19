@@ -23,11 +23,9 @@ function Landing(props) {
                         </button>
                     </Col>
                     <Col>
-                        <Link class="nav-link" to="/calendar">
-                            <button type="button" className="btn btn-secondary button">
-                                <h2>Click here if you are a CA!</h2>
-                            </button>
-                        </Link>
+                        <button type="button" className="btn btn-secondary button">
+                            <h2>Click here if you are a CA!</h2>
+                        </button>
                     </Col>
                 </Row>
             </Container>
