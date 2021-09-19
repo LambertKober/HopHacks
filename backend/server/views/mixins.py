@@ -55,6 +55,6 @@ class SelectionMixin:
         return SelectionSerializer(selection, many=True).data
 
     def delete_selections(self, student_uuid):
-        selection = Selection.studeobjectsnt_set.filter(student__uuid__exact=student_uuid).all()
+        selection = Selection.objects.filter(student__uuid__exact=student_uuid).all()
         for session in selection:
             session.delete()

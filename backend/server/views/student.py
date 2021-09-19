@@ -41,7 +41,7 @@ class StudentItem(APIView, SelectionMixin):
         student.name = request.data["name"]
 
         self.delete_selections(student_id)
-        self.create_selections(student_id, request.data.get("timeSlots"))
+        self.create_selections(student, request.data.get("timeSlots"))
         return Response(data={"uuid": str(student_id)}, status=status.HTTP_200_OK)
 
     def delete(self, request, student_id, *args, **kwargs):

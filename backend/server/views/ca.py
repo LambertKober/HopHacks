@@ -50,7 +50,7 @@ class CAItem(APIView, SessionMixin):
             student_limit = request.data["studentLimit"]
 
         self.delete_sessions(ca_id)
-        self.create_sessions(ca_id, student_limit, request.data.get("timeSlots"))
+        self.create_sessions(ca, student_limit, request.data.get("timeSlots"))
         return Response(data={"uuid": str(ca_id)}, status=status.HTTP_200_OK)
 
     def delete(self, request, ca_id, *args, **kwargs):
