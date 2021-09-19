@@ -3,9 +3,6 @@ import { Button,Modal } from 'react-bootstrap'
 import {Link, useHistory, withRouter} from "react-router-dom";
 import axios from 'axios';
 
-// <Link class="nav-link" to="/calendar/student/trey">
-
-
 function BootstrapModalStudent(props) {
     let base_url = "http://localhost:8000"
     const history = useHistory();
@@ -16,8 +13,8 @@ function BootstrapModalStudent(props) {
         //console.log(name)
         axios.get(`${base_url}/sessions/`)
             .then(res => {/* set calendar component state here */})
-            .then(() => axios.post(`${base_url}/students/`, { "name": name }))
-            .then(res => history.push(`/calendar/student/${res.data.uuid}`))
+            .then(() => axios.post(`${base_url}/students/`, { "name": name })
+                .then(res => history.push(`/calendar/student/${res.data.uuid}`)))
     };
 
     return (
