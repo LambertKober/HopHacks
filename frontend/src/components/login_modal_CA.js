@@ -1,20 +1,19 @@
 import React from 'react'
 import { Button,Modal } from 'react-bootstrap'
 import {Link, withRouter} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import axios from "axios";
-
-// <Link class="nav-link" to="/calendar/CA/trey">
 
 function BootstrapModalCA(props) {
     let base_url = "http://localhost:8000"
-    let uuid = ""
+    const history = useHistory();
 
     const handleSubmit = (event) => {
         event.preventDefault()
         let name = event.target.elements.nameField.value;
         console.log(name)
         axios.post(base_url + "/cas/", { "name": name })
-            .then(res => {uuid = res.data.uuid})
+            .then(res => history.push(`/calendar/CA/${res.data.uuid}`))
     };
 
     return (
@@ -49,4 +48,4 @@ function BootstrapModalCA(props) {
     );
 }
 
-export default BootstrapModalCA;
+export default withRouter(BootstrapModalCA);
