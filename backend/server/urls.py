@@ -19,16 +19,17 @@ from django.urls import path
 from server.views.ca import CACreate, CAItem
 from server.views.schedule import ScheduleItem, ScheduleList
 from server.views.session import SessionItem, SessionItemState, SessionList
+from server.views.student import StudentItem, StudentList
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('cas/', CACreate),
-    path('cas/<str>:ca_id', CAItem),
-    path('schedule/', ScheduleList),
-    path('schedule/<str:schedule_id>', ScheduleItem),
-    path('students/', ScheduleList),
-    path('students/<str:selection_id>', ScheduleItem),
-    path('session/', SessionList),
-    # path('session/<str:sess_id>/state', SessionItemState),
-    path('session/<str:sess_id>', SessionItem),
+    path('cas/', CACreate.as_view()),
+    path('cas/<str:ca_id>', CAItem.as_view()),
+    path('schedule/', ScheduleList.as_view()),
+    path('schedule/<str:schedule_id>', ScheduleItem.as_view()),
+    path('students/', StudentList.as_view()),
+    path('students/<str:student_id>', StudentItem.as_view()),
+    path('session/', SessionList.as_view()),
+    path('session/<str:sess_id>/state', SessionItemState.as_view()),
+    path('session/<str:sess_id>', SessionItem.as_view()),
 ]

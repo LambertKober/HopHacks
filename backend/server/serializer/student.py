@@ -1,9 +1,9 @@
 from rest_framework.serializers import ModelSerializer
 
-from server.model.session import Session
+from server.model.student import Student
 
 
 class StudentSerializer(ModelSerializer):
     class Meta:
-        model = Session
-        fields = {'uuid', 'name'}
+        model = Student
+        fields = ['uuid', 'name']

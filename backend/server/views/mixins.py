@@ -1,4 +1,4 @@
-from datetime import datetime
+from uuid import uuid4
 import heapq
 
 from dateutil.parser import isoparse
@@ -20,16 +20,17 @@ class SessionMixin:
         timestamps = [heapq.heappop(timestamps) for i in range(len(timestamps))]
         time_blocks = TimeBlock.list_from_sorted_starts(timestamps, 15)
         for block in time_blocks:
-            session = Session(startTime=block.start, endTime=block.end, ca=ca.uuid,
+            uuid = uuid4()
+            session = Session(uuid=uuid, startTime=block.start, endTime=block.end, ca=ca,
                               studentLimit=student_limit, status=Session.Status.SCHEDULED)
             session.save()
 
     def get_sessions(self, ca_uuid):
-        sessions = Session.ca_set.filter(uuid=ca_uuid).all()
-        return SessionSerializer(sessions, many=True)
+        sessions = Session.objects.filter(ca__uuid__exact=ca_uuid).all()
+        return SessionSerializer(sessions, many=True).data
 
-    def deletion_sessions(self, ca_uuid):
-        sessions = Session.ca_set.filter(uuid=ca_uuid).all()
+    def delete_sessions(self, ca_uuid):
+        sessions = Session.objects.filter(ca__uuid__exact=ca_uuid).all()
         for session in sessions:
             session.delete()
 
@@ -41,15 +42,15 @@ class SelectionMixin:
         timestamps = [heapq.heappop(timestamps) for i in range(len(timestamps))]
         time_blocks = TimeBlock.list_from_sorted_starts(timestamps, 15)
         for block in time_blocks:
-            selection = Selection(startTime=block.start, endTime=block.end, ca=student.uuid,
-                              status=Session.Status.SCHEDULED)
+            selection = Selection(uuid=student.uuid, startTime=block.start, endTime=block.end,
+                                  student=student)
             selection.save()
 
     def get_selections(self, student_uuid):
-        selection = Selection.student_set.filter(uuid=student_uuid).all()
-        return SelectionSerializer(selection, many=True)
+        selection = Selection.objects.filter(student__uuid__exact=student_uuid).all()
+        return SelectionSerializer(selection, many=True).data
 
     def delete_selections(self, student_uuid):
-        selection = Selection.student_set.filter(uuid=student_uuid).all()
+        selection = Selection.studeobjectsnt_set.filter(student__uuid__exact=student_uuid).all()
         for session in selection:
             session.delete()

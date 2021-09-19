@@ -1,9 +1,9 @@
 from rest_framework.serializers import ModelSerializer
 
-from server.model.session import Session
+from server.model.selection import Selection
 
 
 class SelectionSerializer(ModelSerializer):
     class Meta:
-        model = Session
-        fields = {'uuid', 'startTime', 'endTime', 'student'}
+        model = Selection
+        fields = ['uuid', 'startTime', 'endTime', 'student']

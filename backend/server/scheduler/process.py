@@ -1,4 +1,4 @@
-from scheduler import Student, schedule
+from server.scheduler.scheduler import Student, schedule
 
 
 def get_times_and_caps(sessions):
