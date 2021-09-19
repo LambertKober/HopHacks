@@ -21,7 +21,7 @@ class CACreate(APIView,SessionMixin):
         ca.save()
         student_limit = 1
         if "studentLimit" in request.data:
-            student_limit = request.data["name"]
+            student_limit = request.data["studentLimit"]
         self.create_sessions(ca, student_limit, request.data.get("timeSlots"))
         return Response(data={"uuid": str(uuid)}, status=status.HTTP_201_CREATED)
 
@@ -43,11 +43,11 @@ class CAItem(APIView, SessionMixin):
             return Response(data={}, status=status.HTTP_404_NOT_FOUND)
 
         # TODO: Make difflist instead
-        ca.name = request.data["name"]
-        ca.description = request.data["description"]
+        ca.name = request.data.get("name")
+        ca.description = request.get("description")
         student_limit = 1
         if "studentLimit" in request.data:
-            student_limit = request.data["name"]
+            student_limit = request.data["studentLimit"]
 
         self.delete_sessions(ca_id)
         self.create_sessions(ca_id, student_limit, request.data.get("timeSlots"))
