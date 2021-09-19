@@ -29,7 +29,7 @@ urlpatterns = [
     path('schedule/<str:schedule_id>', ScheduleItem.as_view()),
     path('students/', StudentList.as_view()),
     path('students/<str:student_id>', StudentItem.as_view()),
-    path('session/', SessionList.as_view()),
-    path('session/<str:sess_id>/state', SessionItemState.as_view()),
-    path('session/<str:sess_id>', SessionItem.as_view()),
+    path('sessions/', SessionList.as_view()),
+    path('sessions/<str:sess_id>/state', SessionItemState.as_view()),
+    path('sessions/<str:sess_id>', SessionItem.as_view()),
 ]
