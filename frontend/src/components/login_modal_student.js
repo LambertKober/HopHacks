@@ -14,7 +14,7 @@ function BootstrapModalStudent(props) {
         event.preventDefault()
         let name = event.target.elements.nameField.value;
         console.log(name)
-        axios.post(base_url + "/student", { "name": name })
+        axios.post(base_url + "/students/", { "name": name })
             .then(res => {
                 uuid = res.data.uuid;
             })
