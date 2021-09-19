@@ -1,6 +1,6 @@
 import ScheduleSelector from 'react-schedule-selector';
 import React from 'react';
-import { formatISO , getMinutes} from 'date-fns'
+import { add, parseISO, format, formatISO , getMinutes} from 'date-fns'
 import './calendar.css';
 import { useParams } from 'react-router-dom';
 import { withRouter } from "react-router-dom";
@@ -11,38 +11,29 @@ class CACalendarApp extends React.Component {
 
     state = {
         uuid: "",
-        base_url: "",
+        name: "",
+        base_url: "http://localhost:8000/",
         oh_times: new Map(),
         schedule: []
     }
 
     constructor() {
         super();
-        let d1 = formatISO(new Date(2021, 8, 20, 12, 0),"");
-        let d2 = formatISO(new Date(2021, 8, 20, 12, 15));
-        let d3 = formatISO(new Date(2021, 8, 20, 12, 30));
-        let d4 = formatISO(new Date(2021, 8, 20, 12, 45));
-        this.state.oh_times[d1.toString()] = 1;
-        this.state.oh_times[d2.toString()] = 1;
-        this.state.oh_times[d3.toString()] = 1;
-        this.state.oh_times[d4.toString()] = 1;
     }
 
     handleSubmit = () => {
-        console.log(this.state)
         let mp = this.state.schedule;
-        let res = [];
+        let results = [];
         for (let i = 0; i < mp.length; i++) {
             let d1 = mp[i];
-            if (this.state.oh_times[formatISO(d1).toString()] === 1) {
-                res.push(formatISO(d1).toString());
-            }
+            results.push(formatISO(d1).toString());
         }
         let selection = {};
-        selection.UUID = this.state.uuid;
-        selection.timeSlots = res;
-        axios.post("/student", { selection })
-            .then(res => {})
+        selection.timeSlots = results;
+        selection.name = this.state.name;
+        console.log(selection.name)
+        axios.put(this.state.base_url + `cas/${this.state.uuid}`, { selection })
+            .then()
     }
 
 
@@ -50,22 +41,58 @@ class CACalendarApp extends React.Component {
         this.setState({ schedule: newSchedule })
     }
 
+    updateHours = (sessions) => {
+        //console.log("updating hours")
+        let sessionSlots = [];
+
+        for(let i = 1; i < sessions.length; ++i) {
+            let session = sessions[i];
+            sessionSlots = sessionSlots.concat(this.splitTimeBlock(session.startTime, session.endTime));
+        }
+        //console.log("foo")
+        for(let i = 1; i < sessionSlots.length; ++i) {
+            this.state.oh_times[formatISO(sessionSlots[i])] = 1;
+            //console.log(formatISO(sessionSlots[i]))
+        }
+    }
+
+    splitTimeBlock = (start, end) => {
+        let out = [];
+        let startTime = parseISO(start);
+        let endTime = parseISO(end)
+        let t_d = (endTime - startTime) / 60000; // convert minutes delta
+        let intervals = t_d / this.timeInterval;
+        //console.log(intervals)
+        for (let i = 0; i < intervals; ++i) {
+            out.push(add(startTime, {minutes: i*this.timeInterval}));
+            //console.log(out);
+        }
+        return out;
+    }
+
     renderCell = (time, selected, innerRef) => {
         if (this.state.oh_times[formatISO(time).toString()] === 1) {
             return <div className={(selected) ? "box_close_hover" : "box_close"} ref={innerRef}></div>
         } else {
-            return <div className={(selected) ? "box_open" : "box_open"} ref={innerRef}></div>
+            return <div className={(selected) ? "box_open_hover" : "box_open"} ref={innerRef}></div>
         }
     }
     renderLabel = (date) => {
         if (getMinutes(date) === 0 || getMinutes(date) === 30) {
-            return <div>{formatISO(date,"h:mma")}</div>;
+            return <div>{format(date,"hh:mma")}</div>;
         }
         return <div></div>
     }
 
     handleSetState = (state, props) => {
+        let list = []
         state.uuid = props.match.params.uuid;
+        state.name = props.match.params.name;
+        axios.get(this.state.base_url + `cas/${this.state.uuid}`)
+            .then(res => this.updateHours(res.data.timeSlots))
+        //console.log(this.state.oh_times)
+        //console.log(state.uuid)
+        //console.log(state.name)
     }
 
     render() {

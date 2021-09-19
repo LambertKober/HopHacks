@@ -1,6 +1,6 @@
 import ScheduleSelector from 'react-schedule-selector';
 import React from 'react';
-import { formatISO , getMinutes} from 'date-fns'
+import { format, formatISO , getMinutes} from 'date-fns'
 import './calendar.css';
 import { useParams } from 'react-router-dom';
 import { withRouter } from "react-router-dom";
@@ -53,13 +53,13 @@ class StudentCalendarApp extends React.Component {
     renderCell = (time, selected, innerRef) => {
         if (this.state.oh_times[formatISO(time).toString()] === 1) {
             return <div className={(selected) ? "box_close_hover" : "box_close"} ref={innerRef}></div>
-            } else {
+        } else {
             return <div className={(selected) ? "box_open" : "box_open"} ref={innerRef}></div>
         }
     }
     renderLabel = (date) => {
         if (getMinutes(date) === 0 || getMinutes(date) === 30) {
-            return <div>{formatISO(date,"h:mma")}</div>;
+            return <div>{format(date,"hh:mma")}</div>;
         }
         return <div></div>
     }

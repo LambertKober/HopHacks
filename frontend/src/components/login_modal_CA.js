@@ -13,7 +13,7 @@ function BootstrapModalCA(props) {
         let name = event.target.elements.nameField.value;
         console.log(name)
         axios.post(base_url + "/cas/", { "name": name })
-            .then(res => history.push(`/calendar/CA/${res.data.uuid}`))
+            .then(res => history.push(`/calendar/CA/${name}/${res.data.uuid}`))
     };
 
     return (

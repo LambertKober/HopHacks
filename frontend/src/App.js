@@ -24,7 +24,7 @@ function App() {
                             <StudentCalendarApp className = "calendar_comp"></StudentCalendarApp>
                         </div>
                     </div>} />
-                    <Route path="/calendar/CA/:uuid" children={() => <div>
+                    <Route path="/calendar/CA/:name/:uuid" children={() => <div>
                         <h1 style={{ marginTop: '2.5%' }}>Office Hour Schedule</h1>
                         <h5 style={{ marginBottom: '2%' }}>Drag to select multiple timeslots</h5>
                         <div className = "calendar_comp">
